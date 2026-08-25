@@ -19,13 +19,13 @@ public class SystemInfoWelcome {
 
         // Build Info Display
         StringBuilder info = new StringBuilder();
-        info.append("=== SYSTEM ACCESS GRANTED ===\n\n");
+        info.append("===SYSTEM ACCESS GRANTED ==\n\n");
         info.append("Welcome to the system, ").append(username).append("!\n\n");
         info.append("--- Details ---\n");
         info.append("• User (whoami) : ").append(username).append("\n");
         info.append("• Hostname      : ").append(hostname).append("\n");
-        info.append("• OS Name       : ").append(osName).append("\n");
         info.append("• OS Release    : ").append(osVersion).append("\n");
+        info.append("• OS Name       : ").append(osName).append("\n");
         info.append("• Architecture  : ").append(osArch).append("\n\n");
         info.append("Have a good session!");
 
