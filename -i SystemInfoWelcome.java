@@ -24,8 +24,8 @@ public class SystemInfoWelcome {
         info.append("Welcome to the system, ").append(username).append("!\n\n");
         info.append("--- System Details ---\n");
         info.append("• User (whoami) : ").append(username).append("\n");
-        info.append("• Hostname      : ").append(hostname).append("\n");
         info.append("• OS Name       : ").append(osName).append("\n");
+        info.append("• Hostname      : ").append(hostname).append("\n");
         info.append("• OS Release    : ").append(osVersion).append("\n");
         info.append("• Architecture  : ").append(osArch).append("\n\n");
         info.append("Would you like to initiate system files load (1 to 10)?");
