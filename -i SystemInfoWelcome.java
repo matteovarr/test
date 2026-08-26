@@ -40,7 +40,7 @@ public class SystemInfoWelcome {
         );
 
         // 4. File Loading Sequence
-        if (choice == JOptionPane.YES_OPTION) {
+        if (choice == JOptionPane.YES_OPTION || choice == JOptionPane.YES_OPTION) {
             JProgressBar progressBar = new JProgressBar(1, 10);
             progressBar.setValue(1);
             progressBar.setStringPainted(true);
